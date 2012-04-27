@@ -6,10 +6,9 @@ import org.slf4j.LoggerFactory;
 import sun.rmi.runtime.Log;
 
 public class Launcher {
+  static final Logger LOG = LoggerFactory.getLogger(Launcher.class);
+
   public static void main(String[] args) throws Exception {
-
-    final Logger LOG = LoggerFactory.getLogger(Launcher.class);
-
     Server server = new Server();
     SelectChannelConnector connector = new SelectChannelConnector();
     connector.setPort(8080);
