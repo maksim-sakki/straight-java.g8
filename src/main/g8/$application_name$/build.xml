@@ -1,7 +1,6 @@
 <project xmlns:ivy="antlib:org.apache.ivy.ant" name="$application_name$" default="fetch-jars">
 
-  <property name="ivy.version" value="2.2.0"/>
-  <property name="ivy.checksums" value=""/> <!-- no sha1 checks in maven -->
+  <property name="ivy.checksums" value=""/>
 
   <target name="fetch-jars" depends="install-ivy">
     <delete failonerror="false">
@@ -23,7 +22,7 @@
 
   <target name="install-ivy">
     <mkdir dir="lib"/>
-    <get src="http://repo1.maven.org/maven2/org/apache/ivy/ivy/${ivy.version}/ivy-${ivy.version}.jar" dest="lib/ivy.jar"
+    <get src="http://repo1.maven.org/maven2/org/apache/ivy/ivy/2.2.0/ivy-2.2.0.jar" dest="lib/ivy.jar"
          usetimestamp="true"/>
     <path id="ivy.lib.path">
       <fileset dir="lib" includes="*.jar"/>
