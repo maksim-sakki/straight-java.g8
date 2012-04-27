@@ -1,5 +1,5 @@
 =============
-STRAIGHT JAVA
+Straight Java
 =============
 
-A java project template with ant-ivy
+A Java web app template with ant, ivy, jetty, log4j

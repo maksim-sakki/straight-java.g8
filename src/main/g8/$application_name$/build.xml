@@ -1,7 +1,4 @@
 <project xmlns:ivy="antlib:org.apache.ivy.ant" name="$application_name$" default="fetch-jars">
-
-  <property name="ivy.checksums" value=""/>
-
   <target name="fetch-jars" depends="install-ivy">
     <delete failonerror="false">
       <fileset dir="lib/default"/>
@@ -29,5 +26,4 @@
     </path>
     <taskdef resource="org/apache/ivy/ant/antlib.xml" uri="antlib:org.apache.ivy.ant" classpathref="ivy.lib.path"/>
   </target>
-
 </project>

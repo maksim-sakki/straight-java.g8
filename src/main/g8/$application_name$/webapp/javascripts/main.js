@@ -1,0 +1,3 @@
+function welcome() {
+  alert('Vóila');
+}
