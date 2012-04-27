@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<ivy-module version="1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:noNamespaceSchemaLocation="http://ant.apache.org/ivy/schemas/ivy.xsd">
+  <info organisation="$application_name$" module="$application_name$"/>
+
+  <configurations>
+    <conf name="default" description="runtime"/>
+    <conf name="test"/>
+    <conf name="devel"/>
+    <conf name="sources"/>
+  </configurations>
+
+  <dependencies defaultconf="default->default;sources->sources">
+    <dependency org="org.mortbay.jetty" name="jetty" rev="6.1.25" conf="devel->default"/>
+    <dependency org="org.mortbay.jetty" name="jetty-naming" rev="6.1.25" conf="devel->default"/>
+    <dependency org="org.mortbay.jetty" name="jetty-plus" rev="6.1.25" conf="devel->default"/>
+    <dependency org="org.mortbay.jetty" name="jsp-2.0" rev="6.1.25" conf="devel->default">
+      <exclude org="org.eclipse.jdt"/>
+      <exclude org="org.slf4j"/>
+    </dependency>
+
+    <exclude org="javax.servlet" module="servlet-api" conf="default"/>
+    <exclude org="javax.servlet" module="jsp-api" conf="default"/>
+    <exclude org="org.slf4j" module="slf4j-simple"/>
+    <exclude org="org.slf4j" module="jcl104-over-slf4j"/>
+
+  </dependencies>
+</ivy-module>

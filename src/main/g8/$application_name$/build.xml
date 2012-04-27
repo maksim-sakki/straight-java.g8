@@ -1,0 +1,34 @@
+<project xmlns:ivy="antlib:org.apache.ivy.ant" name="$application_name$" default="fetch-jars">
+
+  <property name="ivy.version" value="2.2.0"/>
+  <property name="ivy.checksums" value=""/> <!-- no sha1 checks in maven -->
+
+  <target name="fetch-jars" depends="install-ivy">
+    <delete failonerror="false">
+      <fileset dir="lib/default"/>
+      <fileset dir="lib/test"/>
+      <fileset dir="lib/devel"/>
+      <fileset dir="lib/sources"/>
+    </delete>
+    <ivy:retrieve pattern="lib/[conf]/[artifact]-[type]-[revision].[ext]" symlink="true"/>
+  </target>
+
+  <target name="clean-jars" description="Removes all libraries">
+    <delete dir="lib" includes="**/*.jar" excludes="non-ivy/*" includeemptydirs="true"/>
+  </target>
+
+  <target name="ivy-clean-cache" description="Cleans Ivy cache">
+    <ivy:cleancache/>
+  </target>
+
+  <target name="install-ivy">
+    <mkdir dir="lib"/>
+    <get src="http://repo1.maven.org/maven2/org/apache/ivy/ivy/${ivy.version}/ivy-${ivy.version}.jar" dest="lib/ivy.jar"
+         usetimestamp="true"/>
+    <path id="ivy.lib.path">
+      <fileset dir="lib" includes="*.jar"/>
+    </path>
+    <taskdef resource="org/apache/ivy/ant/antlib.xml" uri="antlib:org.apache.ivy.ant" classpathref="ivy.lib.path"/>
+  </target>
+
+</project>
